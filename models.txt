@@ -1,0 +1,25 @@
+1. registration
+    useremail
+    username
+    passwords
+    datedadded
+    is_active
+
+2. carmodels
+    modelname
+    dateadded
+
+3. cars
+    carmodel(FK)
+    seats
+    engines
+    dimension
+    transmision
+    weight/capacity
+    waranty
+    dateadded
+
+4. carimages
+   car_id(FK)
+   carimages
+   dateadded
