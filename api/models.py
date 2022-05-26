@@ -1,4 +1,6 @@
+from distutils.command.upload import upload
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Registration(models.Model):
@@ -43,4 +45,10 @@ class Cars(models.Model):
 
     def __str__(self):
         return self.fueltype
+
+
+class CarImages(models.Model):
+    car_id = models.ForeignKey(Cars, on_delete=models.CASCADE)
+    carimages = CloudinaryField('images')
+    dateadded = models.CharField()
 
