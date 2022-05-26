@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
-from decouple import Csv,config
+from decouple import config,Csv
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
