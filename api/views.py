@@ -37,7 +37,6 @@ def resetpassword_view(request):
     else:
         return Response({"error":"Wrong useremail provided."})
 
-
 @api_view(['POST'])
 def login_view(request):
     details = request.data
@@ -60,3 +59,33 @@ def login_view(request):
             return Response({"error":"wrong password, try again."})
     else:
         return Response({"error":"Wrong useremail provided."})
+
+@api_view(['GET'])
+def carmodels_view(request):
+    models = Carmodels.objects.all()
+
+    if models:
+        serialize = CarmodelsSerializer(models, many = True)
+        return Response(serialize.data)
+    else:
+        return Response([])
+
+@api_view(['GET'])
+def cars_view(request):
+    cars = Cars.objects.all()
+
+    if cars:
+        serialize = CarsSerializer(cars, many = True)
+        return Response(serialize.data)
+    else:
+        return Response([])
+
+@api_view(['GET'])
+def carsimages_view(request):
+    carimages = CarImages.objects.all()
+
+    if carimages:
+        serialize = CarImagesSerializer(carimages, many = True)
+        return Response(serialize.data)
+    else:
+        return Response([])
