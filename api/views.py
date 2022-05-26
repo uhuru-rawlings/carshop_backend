@@ -21,3 +21,42 @@ def registration_view(request):
         new_user = Registration(useremail = useremail,username = username,passwords = make_password(passwords))
         new_user.save()
         return Response({"success":"user added successfully."})
+
+@api_view(['POST'])
+def resetpassword_view(request):
+    details = request.data
+    useremail = details['useremail']
+    passwords = details['passwords']
+
+    checkuser = Registration.objects.filter(useremail = useremail)
+    if checkuser.exists():
+        checkuser = Registration.objects.get(useremail = useremail)
+        checkuser.passwords = make_password(passwords)
+        checkuser.save()
+        return Response({"success":"password reset successfully."})
+    else:
+        return Response({"error":"Wrong useremail provided."})
+
+
+@api_view(['POST'])
+def resetpassword_view(request):
+    details = request.data
+    useremail = details['useremail']
+    passwords = details['passwords']
+
+    checkuser = Registration.objects.filter(useremail = useremail)
+    if checkuser.exists():
+        checkuser = Registration.objects.get(useremail = useremail)
+        if check_password(passwords, checkuser.passwords):
+            payload = {
+                'id': checkuser.id,
+                'useremail':checkuser.useremail,
+                'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
+                'iat': datetime.datetime.utcnow()
+            }
+            token = jwt.encode(payload,'secret',algorithm='HS256').decode('utf-8')
+            return Response({"token":token})
+        else:
+            return Response({"error":"wrong password, try again."})
+    else:
+        return Response({"error":"Wrong useremail provided."})
