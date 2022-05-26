@@ -18,6 +18,7 @@ class Registration(models.Model):
 
 class Carmodels(models.Model):
     modelname = models.CharField(max_length=300)
+    modellogo = CloudinaryField('logos')
     dateadded = models.DateTimeField(auto_now=True)
 
     class Meta:
