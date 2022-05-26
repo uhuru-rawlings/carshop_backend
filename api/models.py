@@ -13,3 +13,13 @@ class Registration(models.Model):
 
     def __str__(self):
         return self.username
+
+class Carmodels(models.Model):
+    modelname = models.CharField(max_length=300)
+    dateadded = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'Carmodels'
+
+    def __str__(self):
+        return self.modelname
