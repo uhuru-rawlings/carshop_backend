@@ -23,3 +23,24 @@ class Carmodels(models.Model):
 
     def __str__(self):
         return self.modelname
+
+class Cars(models.Model):
+    carmodel = models.CharField(max_length=200)
+    seats = models.IntegerField()
+    engines_cc = models.IntegerField()
+    fueltype = models.CharField(max_length=200)
+    dimension_length = models.FloatField()
+    dimension_width = models.FloatField()
+    dimension_height = models.FloatField()
+    transmision = models.CharField(max_length=200)
+    capacity_weight = models.FloatField()
+    waranty_years = models.IntegerField()
+    price = models.IntegerField()
+    dateadded = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'Cars'
+
+    def __str__(self):
+        return self.fueltype
+
