@@ -52,3 +52,9 @@ class CarImages(models.Model):
     carimages = CloudinaryField('images')
     dateadded = models.CharField()
 
+    class Meta:
+        db_table = 'CarImages'
+
+    def __str__(self):
+        return self.carimages
+
