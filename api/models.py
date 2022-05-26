@@ -27,7 +27,7 @@ class Carmodels(models.Model):
         return self.modelname
 
 class Cars(models.Model):
-    carmodel = models.CharField(max_length=200)
+    carmodel = models.ForeignKey(Carmodels, on_delete=models.CASCADE)
     seats = models.IntegerField()
     engines_cc = models.IntegerField()
     fueltype = models.CharField(max_length=200)
@@ -50,7 +50,7 @@ class Cars(models.Model):
 class CarImages(models.Model):
     car_id = models.ForeignKey(Cars, on_delete=models.CASCADE)
     carimages = CloudinaryField('images')
-    dateadded = models.CharField()
+    dateadded = models.DateTimeField(auto_now=True)
 
     class Meta:
         db_table = 'CarImages'
