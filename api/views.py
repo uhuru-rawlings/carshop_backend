@@ -39,7 +39,7 @@ def resetpassword_view(request):
 
 
 @api_view(['POST'])
-def resetpassword_view(request):
+def login_view(request):
     details = request.data
     useremail = details['useremail']
     passwords = details['passwords']
