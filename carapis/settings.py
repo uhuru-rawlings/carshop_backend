@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'api',
     'cloudinary',
     'corsheaders',
-    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +78,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'carapis.wsgi.application'
 
-REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
+# REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
 
 CLOUDINARY_STORAGE = {
         'CLOUD_NAME': config('CLOUD_NAME'),
